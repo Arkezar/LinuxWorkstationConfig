@@ -6,15 +6,17 @@
 mkfifo "$PANEL_FIFO"
 
 function battery_state() {
-if [ "$(cat /sys/class/power_supply/BAT1/status)" = "Charging" ]; then
-	echo "Charging"
-else
-        while true
-        do
-                bat=$(cat /sys/class/power_supply/BAT1/capacity)
-                echo "B${bat}%"
-                sleep 30
-        done < <(echo)
+if [ -d "$/sys/class/power_supply/BAT1" ]; then
+	if [ "$(cat /sys/class/power_supply/BAT1/status)" = "Charging" ]; then
+		echo "Charging"
+	else
+        	while true
+        	do
+                	bat=$(cat /sys/class/power_supply/BAT1/capacity)
+                	echo "B${bat}%"
+                	sleep 30
+        	done < <(echo)
+	fi
 fi
 }
 
