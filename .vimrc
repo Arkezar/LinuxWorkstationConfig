@@ -1,104 +1,135 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
-syntax on
-set background=dark
-set showcmd
-" set the runtime path to include Vundle and initialize
+set nocompatible
+
+filetype off
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'https://github.com/vim-scripts/a.vim'
-Plugin 'https://github.com/scrooloose/nerdtree'
-Plugin 'https://github.com/scrooloose/nerdcommenter'
-Plugin 'https://github.com/ervandew/supertab'
-Plugin 'https://github.com/majutsushi/tagbar'
-Plugin 'https://github.com/bling/vim-airline'
-Plugin 'https://github.com/SirVer/ultisnips'
-Plugin 'https://github.com/Townk/vim-autoclose'
-Plugin 'https://github.com/tpope/vim-fugitive'
-Plugin 'https://github.com/airblade/vim-gitgutter'
-Plugin 'https://github.com/terryma/vim-multiple-cursors'
-Plugin 'https://github.com/Valloric/YouCompleteMe'
+" ----- Making Vim look good ------------------------------------------
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tomasr/molokai'
+Plugin 'bling/vim-airline'
+
+" ----- Vim as a programmer's text editor -----------------------------
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'scrooloose/syntastic'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
+Plugin 'majutsushi/tagbar'
+Plugin 'kien/ctrlp.vim'
+Plugin 'vim-scripts/a.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'rdnetto/YCM-Generator'
+
+" ----- Working with Git ----------------------------------------------
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
+
+" ----- Other text editing features -----------------------------------
+Plugin 'Raimondi/delimitMate'
+
+" ----- man pages, tmux -----------------------------------------------
+Plugin 'jez/vim-superman'
+Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'https://github.com/LaTeX-Box-Team/LaTeX-Box.git'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+call vundle#end()
 
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" " UltiSnips plugin
-" "
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-"
-" "
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" " SuperTab plugin
-" "
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"let loaded_supertab = 1" Uncomment the this line to disable the plugin
-let g:SuperTabDefaultCompletionType='<c-x><c-u>'
-" 'user' defined default
-" completion type
-let g:SuperTabDefaultCompletionType = 'context'
-" 'context' defined
-" default completion type
-let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
-let g:SuperTabLongestHighlight=1
-let g:SuperTabLongestEnhanced=1
-"
-" "
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" " Airline plugin
-" "
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+filetype plugin indent on
+
+set backspace=indent,eol,start
+set ruler
+set number
+set showcmd
+set incsearch
+set hlsearch
+
+syntax on
+
+set mouse=a
+
+" ----- Plugin-Specific Settings --------------------------------------
+
+" ----- altercation/vim-colors-solarized settings -----
+" Toggle this to "light" for light colorscheme
+set background=dark
+
+" Uncomment the next line if your terminal is not configured for solarized
+"let g:solarized_termcolors=256
+"let g:solarized_termtrans = 1
+" Set the colorscheme
+" colorscheme solarized
+colorscheme molokai
+
+" ----- bling/vim-airline settings -----
+" Always show statusbar
 set laststatus=2
+
+" Fancy arrow symbols, requires a patched font
+" To install a patched font, run over to
+"     https://github.com/abertsch/Menlo-for-Powerline
+" download all the .ttf files, double-click on them and click "Install"
+" Finally, uncomment the next line
 let g:airline_powerline_fonts = 1
-" Use Powerline fonts to show beautiful
-" symbols
-let g:airline_theme = 'murmur'                                          "
-" Select 'murmur' theme as default one
-let g:airline_inactive_collapse = 0
-" Do not collapse the status line while
-" having multiple windows
-let g:airline#extensions#whitespace#enabled = 0                         " Do
-" not check for whitespaces
+"let g:airline_theme = 'murmur' 
+" Show PASTE if in paste mode
+let g:airline_detect_paste=1
+
+" Show airline for tabs too
 let g:airline#extensions#tabline#enabled = 1
-" Display tab bar with buffers
-let g:airline#extensions#branch#enabled = 1
-" Enable Git client integration
-let g:airline#extensions#tagbar#enabled = 1
-" Enable Tagbar integration
-let g:airline#extensions#hunks#enabled = 1
-" Enable Git hunks integration
-"
-" "
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" " NERDTree plugin
-" "
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:NERDTreeMouseMode = 2
-" Single-click to expand the directory,
-" double-click to open the file
-let g:NERDTreeShowHidden = 1
+
+" ----- jistr/vim-nerdtree-tabs -----
+" Open/close NERDTree Tabs with \t
+nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
+" To have NERDTree always open on startup
+let g:nerdtree_tabs_open_on_console_startup = 1
+
+" ----- scrooloose/syntastic settings -----
+let g:syntastic_error_symbol = '✘'
+let g:syntastic_warning_symbol = "▲"
+augroup mySyntastic
+  au!
+  au FileType tex let b:syntastic_mode = "passive"
+augroup END
+
+" ----- xolox/vim-easytags settings -----
+" Where to look for tags files
+set tags=./tags;,~/.vimtags
+" Sensible defaults
+let g:easytags_events = ['BufReadPost', 'BufWritePost']
+let g:easytags_async = 1
+let g:easytags_dynamic_files = 2
+let g:easytags_resolve_links = 1
+let g:easytags_suppress_ctags_warning = 1
+
+" ----- majutsushi/tagbar settings -----
+" Open/close tagbar with \b
+nmap <silent> <leader>b :TagbarToggle<CR>
+" Uncomment to open tagbar automatically whenever possible
+autocmd BufEnter * nested :call tagbar#autoopen(0)
+
+" ----- airblade/vim-gitgutter settings -----
+" Required after having changed the colorscheme
+hi clear SignColumn
+" In vim-airline, only display "hunks" if the diff is non-zero
+let g:airline#extensions#hunks#non_zero_only = 1
+
+" ----- Raimondi/delimitMate settings -----
+let delimitMate_expand_cr = 1
+augroup mydelimitMate
+  au!
+  au FileType markdown let b:delimitMate_nesting_quotes = ["`"]
+  au FileType tex let b:delimitMate_quotes = ""
+	au FileType tex let b:delimitMate_matchpairs = "(:),[:],{:},`:'"
+  au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
+augroup END
+
+" ----- jez/vim-superman settings -----
+" better man page support
+" noremap K :SuperMan <cword><CR>
 " YCM
 let g:ycm_min_num_of_chars_for_completion = 1
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'

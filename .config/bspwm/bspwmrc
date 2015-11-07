@@ -20,8 +20,8 @@ bspc monitor $monitor \
     let i++
 done
 
-bspc rule -a Gimp desktop=^8 follow=on floating=on
-bspc rule -a Chromium desktop=^2
+#bspc rule -a Gimp desktop=^8 follow=on floating=on
+#bspc rule -a Chromium desktop=^2
 bspc rule -a vlc floating=on
 #bspc rule -a Kupfer.py focus=on
 #bspc rule -a Screenkey manage=off
@@ -32,3 +32,4 @@ compton &
 nm-applet &
 panel &
 setxkbmap pl &
+xflux -l 51.0959 -g 17.028472
