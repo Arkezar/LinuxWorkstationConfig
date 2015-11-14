@@ -2,8 +2,7 @@ set nocompatible
 
 filetype off
 
-"set rtp+=~/.vim/bundle/Vundle.vim
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 Plug 'gmarik/Vundle.vim'
 
@@ -22,7 +21,8 @@ Plug 'kien/ctrlp.vim'
 Plug 'vim-scripts/a.vim'
 Plug 'Valloric/YouCompleteMe'
 Plug 'rdnetto/YCM-Generator'
-Plug 'gilligan/vim-lldb'
+"Plug 'gilligan/vim-lldb'
+Plug 'critiqjo/lldb.nvim'
 " ----- Working with Git ----------------------------------------------
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'

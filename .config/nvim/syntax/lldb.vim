@@ -1,0 +1,1 @@
+../plugged/lldb.nvim/syntax/lldb.vim

@@ -1,0 +1,44 @@
+#!/bin/sh
+
+# Start dbus
+if [ -d /etc/X11/xinit/xinitrc.d ]; then
+  for f in /etc/X11/xinit/xinitrc.d/*; do
+    [ -x "$f" ] && . "$f"
+  done
+  unset f
+fi
+
+# System tray
+#redshiftgui --min &
+#dropbox start
+volumeicon &
+nm-applet &
+#tidybattery &
+cbatticon &
+#octopi-notifier &
+#krb5-auth-dialog &
+
+# Gnome services
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+#zeitgeist-daemon &
+
+#autorandr --change
+#sh ~/.fehbg &
+nitrogen --restore
+compton -b --config ~/.config/compton.conf
+tint2 &
+xsetroot -cursor_name left_ptr
+light-locker --lock-on-suspend &
+redshift &
+unclutter -grab &
+systemctl --user start thunar
+
+#Thunar --daemon &
+
+# Rename the window manager so that MATLAB displays correctly
+wmname LG3D
+
+setxkbmap pl
+
+# Menu in system tray; start this last so hopefully it shows up in the upper-right corner
+menutray -i -gtk3 &
