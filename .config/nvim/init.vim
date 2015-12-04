@@ -2,8 +2,7 @@ set nocompatible
 
 filetype off
 
-"set rtp+=~/.vim/bundle/Vundle.vim
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 Plug 'gmarik/Vundle.vim'
 
@@ -21,8 +20,10 @@ Plug 'majutsushi/tagbar'
 Plug 'kien/ctrlp.vim'
 Plug 'vim-scripts/a.vim'
 Plug 'Valloric/YouCompleteMe'
-Plug 'rdnetto/YCM-Generator'
-Plug 'gilligan/vim-lldb'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+Plug 'aklt/plantuml-syntax'
+"Plug 'gilligan/vim-lldb'
+Plug 'critiqjo/lldb.nvim'
 " ----- Working with Git ----------------------------------------------
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -108,7 +109,6 @@ let g:easytags_suppress_ctags_warning = 1
 " Open/close tagbar with \b
 nmap <silent> <leader>b :TagbarToggle<CR>
 " Uncomment to open tagbar automatically whenever possible
-
 " autocmd BufEnter * nested :call tagbar#autoopen(0)
 
 " ----- airblade/vim-gitgutter settings -----
@@ -136,3 +136,5 @@ let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 
 let g:LatexBox_latexmk_options = "-pdf"
 let g:LatexBox_viewer = "evince"
+
+let g:plantuml_executable_script='java -jar /opt/plantuml/plantuml.jar -tsvg'
