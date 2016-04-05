@@ -48,3 +48,4 @@ bspc rule -a lxappearance floating=on
 bspc rule -a chrome_app_list floating=on
 bspc rule -a Galculator floating=on
 
+wmname LG3D

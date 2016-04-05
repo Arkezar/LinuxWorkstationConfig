@@ -26,7 +26,10 @@ flags = [
     #'-I',
     #'/usr/include',
     '-isystem',
-    '/usr/include/c++/5.2.0'
+    '/usr/include/c++/5.3.0',
+    '-isystem',
+    '/usr/include'
+
     #'-isystem',
    # '/usr/include/c++/5.2.0/backward',
     #'-isystem',

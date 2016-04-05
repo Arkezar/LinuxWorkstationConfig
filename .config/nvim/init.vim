@@ -30,6 +30,7 @@ Plug 'tpope/vim-fugitive'
 
 " ----- Other text editing features -----------------------------------
 Plug 'Raimondi/delimitMate'
+Plug 'leafgarland/typescript-vim'
 
 " ----- man pages, tmux -----------------------------------------------
 Plug 'jez/vim-superman'
@@ -108,6 +109,7 @@ let g:easytags_suppress_ctags_warning = 1
 " ----- majutsushi/tagbar settings -----
 " Open/close tagbar with \b
 nmap <silent> <leader>b :TagbarToggle<CR>
+nmap <C-b> <Plug>LLBreakSwitch
 " Uncomment to open tagbar automatically whenever possible
 " autocmd BufEnter * nested :call tagbar#autoopen(0)
 

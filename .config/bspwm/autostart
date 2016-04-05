@@ -26,18 +26,17 @@ nm-applet &
 #sh ~/.fehbg &
 nitrogen --restore
 tint2 &
-compton -b --config ~/.config/compton.conf
+compton --config ~/.config/compton.conf &
 #tint3 -c ~/.config/tint3/tint2rc &
 xsetroot -cursor_name left_ptr
-light-locker --lock-on-suspend &
+#light-locker --lock-on-suspend &
 redshift &
-unclutter -grab &
+#unclutter -grab &
 #systemctl --user start thunar
 
 #Thunar --daemon &
 
 # Rename the window manager so that MATLAB displays correctly
-wmname LG3D
 
 setxkbmap pl
 
