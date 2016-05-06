@@ -29,11 +29,11 @@ shift + super + F1
   ~/.config/bspwm/scripts/renumber_desktops.sh
 # Move the window to the desktop to the left and also remove the current desktop if it's empty after moving.
 alt + F1
-	bspc window --to-desktop prev;\
+	bspc node --to-desktop prev;\
 	~/.config/bspwm/scripts/remove_desktop.sh
 # Move the window to the previous monitor and also remove the current desktop if it's empty after moving.
 alt + super + F1
-  bspc window --to-monitor prev;\
+  bspc node --to-monitor prev;\
   ~/.config/bspwm/scripts/remove_desktop.sh
 # Cycle desktops in reverse
 #F2
@@ -47,11 +47,11 @@ shift + super + F2
   ~/.config/bspwm/scripts/renumber_desktops.sh
 # Move the window to the desktop to the right and also remove the current desktop if it's empty after moving.
 alt + F2
-	bspc window --to-desktop next;\
+	bspc node --to-desktop next;\
 	~/.config/bspwm/scripts/remove_desktop.sh
 # Move the window to the next monitor and also remove the current desktop if it's empty after moving.
 alt + super + F2
-  bspc window --to-monitor next;\
+  bspc node --to-monitor next;\
   ~/.config/bspwm/scripts/remove_desktop.sh
 
 # Desktop splitting #
@@ -68,7 +68,7 @@ alt + super + F2
 #	bspc desktop --layout next
 # Toggle fullscreen
 super + F4
-	bspc window --toggle fullscreen
+	bspc node --toggle fullscreen
 # Toggle display of windows
 alt + F4
   bspc control --toggle-visibility
@@ -85,12 +85,12 @@ alt + space
 # Move the current window onto a new desktop in the background
 super + F5
 	~/.config/bspwm/scripts/add_desktop.sh;\
-	bspc window --to-desktop next.free
+	bspc node --to-desktop next.free
 # Move the current window onto a new desktop and switch to it
 alt + F5
 	~/.config/bspwm/scripts/add_desktop.sh;\
-	bspc window --to-desktop next.free;\
-	bspc window --focus last
+	bspc node --to-desktop next.free;\
+	bspc node --focus last
 
 # Backlight#
 # Adjust backlight
@@ -124,15 +124,15 @@ alt + F5
 # Window & Desktop management #
 # Close the current window, and also remove the current desktop after closing (if possible).
 super + c
-	bspc window --close;\
+	bspc node --close;\
 	sleep 0.1;\
 	~/.config/bspwm/scripts/remove_desktop.sh
 # Close the current window without removing the current desktop
 super + alt + c
-	bspc window --close
+	bspc node --close
 # Move a window to a desktop, and remove the current desktop after closing (if possible).
 super + alt + {1-9,0}
-	bspc window --to-desktop ^{1-9,10};\
+	bspc node --to-desktop ^{1-9,10};\
 	~/.config/bspwm/scripts/remove_desktop.sh
 
 # Window & Desktop switching #
@@ -142,27 +142,27 @@ super + {1-9,0}
 # Focus windows through the focusing history
 super + {q,e}
 	bspc control --record-history off;\
-	bspc window --focus {older,newer};\
+	bspc node --focus {older,newer};\
 	bspc control --record-history on
 # Focus the last desktop/window
 super + {Tab,grave}
-	bspc {window,desktop} --focus last
+	bspc {node,desktop} --focus last
 # Swap with the last desktop
 alt + grave
 	bspc desktop --swap last;\
 	~/.config/bspwm/scripts/renumber_desktops.sh
 # Swap with the last window
 alt + Tab
-	bspc window --swap last
+	bspc node --swap last
 # Swap with the biggest window on the current desktop
 #super + r
 #	bspc window --swap biggest
 # Focus windows by direction
 super + {h,j,k,l}
-	bspc window --focus {left,down,up,right}
+	bspc node --focus {west,south,north,east}
 # Swap windows by direction
 super + alt + {h,j,k,l}
-	bspc window --swap {left,down,up,right}
+	bspc node --swap {west,south,north,east}
 
 # Special windows #
 # Toggle sticky
@@ -170,13 +170,13 @@ super + alt + {h,j,k,l}
 #	bspc window --toggle sticky
 # Toggle private
 super + s
-	bspc window --toggle private
+	bspc node --toggle ~private
 # Toggle pseudotiling
 super + d
-	bspc window --toggle pseudo_tiled
+	bspc node --toggle ~pseudo_tiled
 # Toggle floating
 super + f
-	bspc window --toggle floating
+	bspc node --toggle ~floating
 
 # Desktop splitting #
 # Adjust splitting ratio
@@ -185,10 +185,10 @@ super + {z,x,v,b}
 	bspc desktop --equalize
 # Move the specified edge outwards
 super + {u,i,o,p}
-	bspc window --edge {left -10,down +10,up -10,right +10}
+	bspc node --edge {left -10,down +10,up -10,right +10}
 # Move the specified edge inwards
 super + alt + {u,i,o,p}
-	bspc window --edge {left +10,down -10,up +10,right -10}
+	bspc node --edge {left +10,down -10,up +10,right -10}
 # Circulate windows
 super + {comma,period}
 	bspc desktop --circulate {backward,forward}
