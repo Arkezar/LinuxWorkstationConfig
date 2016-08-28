@@ -26,7 +26,7 @@ flags = [
     #'-I',
     #'/usr/include',
     '-isystem',
-    '/usr/include/c++/5.3.0',
+    '/usr/include/c++/6.1.1',
     '-isystem',
     '/usr/include'
 
