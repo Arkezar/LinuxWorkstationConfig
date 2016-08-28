@@ -1,0 +1,22 @@
+URxvt.background: rgba:0000/0000/0000/c800
+URxvt.foreground: #61b8d0
+URxvt.depth: 32
+
+
+URxvt.font: xft:Menlo for Powerline:size=10
+
+URxvt.scrollstyle: plain
+
+URxvt.scrollBar_right: true
+
+
+URxvt.iso14755: false
+
+URxvt.perl-ext: default,url-select
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.launcher: /usr/bin/xdg-open
+URxvt.url-select.underline: true
+
+URxvt.perl-ext-common: default,clipboard
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
