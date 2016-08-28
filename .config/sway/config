@@ -169,7 +169,7 @@ bar {
         status_command i3blocks
 }
 
-input "2:7:SynPS/2_Synaptics_TouchPad" {
+input "1739:30382:DLL0704:01_06CB:76AE_To" {
 	tap enabled
 	natural_scroll enabled
 	dwt enabled
