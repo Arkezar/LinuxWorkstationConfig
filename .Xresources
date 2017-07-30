@@ -3,7 +3,7 @@ URxvt.foreground: #61b8d0
 URxvt.depth: 32
 
 
-URxvt.font: xft:Menlo for Powerline:size=12
+URxvt.font: xft:Hasklig:size=14
 
 URxvt.scrollstyle: plain
 

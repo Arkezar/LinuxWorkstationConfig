@@ -11,9 +11,6 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 alias ls='ls --color=auto'
-alias vim='nvim'
-
-neofetch
 
 vman() {
 	nvim -c "SuperMan $*"
@@ -23,7 +20,10 @@ vman() {
 	fi
 }
 
-source /usr/share/zsh/scripts/antigen/antigen.zsh
+#source /usr/share/zsh/scripts/antigen/antigen.zsh
+source /home/arkezar/.config/antigen.zsh
 antigen use oh-my-zsh
 antigen theme bira
 antigen bundle zsh-users/zsh-syntax-highlighting
+
+neofetch

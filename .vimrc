@@ -2,10 +2,7 @@ set nocompatible
 
 filetype off
 
-"set rtp+=~/.vim/bundle/Vundle.vim
 call plug#begin('~/.vim/plugged')
-
-Plug 'gmarik/Vundle.vim'
 
 " ----- Making Vim look good ------------------------------------------
 Plug 'altercation/vim-colors-solarized'
@@ -21,14 +18,17 @@ Plug 'majutsushi/tagbar'
 Plug 'kien/ctrlp.vim'
 Plug 'vim-scripts/a.vim'
 Plug 'Valloric/YouCompleteMe'
-Plug 'rdnetto/YCM-Generator'
-Plug 'gilligan/vim-lldb'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+Plug 'aklt/plantuml-syntax'
+"Plug 'gilligan/vim-lldb'
+Plug 'critiqjo/lldb.nvim'
 " ----- Working with Git ----------------------------------------------
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
 " ----- Other text editing features -----------------------------------
 Plug 'Raimondi/delimitMate'
+Plug 'leafgarland/typescript-vim'
 
 " ----- man pages, tmux -----------------------------------------------
 Plug 'jez/vim-superman'
@@ -107,13 +107,14 @@ let g:easytags_suppress_ctags_warning = 1
 " ----- majutsushi/tagbar settings -----
 " Open/close tagbar with \b
 nmap <silent> <leader>b :TagbarToggle<CR>
+nmap <C-b> <Plug>LLBreakSwitch
 " Uncomment to open tagbar automatically whenever possible
-
 " autocmd BufEnter * nested :call tagbar#autoopen(0)
 
 " ----- airblade/vim-gitgutter settings -----
 " Required after having changed the colorscheme
 hi clear SignColumn
+hi Normal ctermbg=none
 " In vim-airline, only display "hunks" if the diff is non-zero
 let g:airline#extensions#hunks#non_zero_only = 1
 
@@ -132,7 +133,8 @@ augroup END
 " noremap K :SuperMan <cword><CR>
 " YCM
 let g:ycm_min_num_of_chars_for_completion = 1
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 
 let g:LatexBox_latexmk_options = "-pdf"
 let g:LatexBox_viewer = "evince"
+
+let g:plantuml_executable_script='java -jar /opt/plantuml/plantuml.jar -tsvg'
